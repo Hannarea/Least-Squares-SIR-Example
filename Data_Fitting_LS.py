@@ -51,7 +51,7 @@ x0 = np.array([0,0])
 t = np.linspace(0,10,10)
 m = LS(x0, t, y0, infectives)
 
-print('this is m:',m.x)
+print('these are the best fit parameters [beta, gamma]: ',m.x)
 
 
 # get the solutions using the parameters found with LS
