@@ -12,4 +12,7 @@ def readData(filename):
         lines = file.readlines()
         data_str = lines[0]
         data = np.array([float(i) for i in data_str.split(',')])
+        # If you want the columns, you can use
+        # data = np.array(float(line.split(',')[0]) for line in lines)
     return data
+
