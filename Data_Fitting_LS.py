@@ -8,6 +8,7 @@ Created on Fri Mar 26 19:59:51 2021
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate, optimize
+from Utils.ReadData import readData
 
 # Here is the data we are going to fit:
 # infectives I at time t
@@ -15,6 +16,11 @@ time = np.linspace(0,10,10)
 infectives = np.array([1.0 , 8.6556056 , 9.37871953 , 8.44328311 ,
                        7.55728868 , 6.76265894 , 6.05150019 , 
                        5.41512095 , 4.84566321 , 4.33608991])
+
+data = readData('Data/OrangeFL_CSSEGISandData_time_series_covid19_confirmed_US.csv')
+
+print(data)
+
 # Known inital conditions:
 y0 = np.array([10, 1, 0])
 
