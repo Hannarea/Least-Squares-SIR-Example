@@ -1,3 +1,3 @@
 # Modeling Project
 
-This is a reprository to host my various Python projects. 
+This is a reprository for disease models, data, and code to fit the models to the data. 
