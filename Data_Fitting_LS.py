@@ -8,7 +8,7 @@ Created on Fri Mar 26 19:59:51 2021
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate, optimize
-from Utils.ReadData import readData
+from Utils.Simulate import simulate
 
 # Here is the data we are going to fit:
 # infectives I at time t
@@ -17,9 +17,6 @@ infectives = np.array([1.0 , 8.6556056 , 9.37871953 , 8.44328311 ,
                        7.55728868 , 6.76265894 , 6.05150019 , 
                        5.41512095 , 4.84566321 , 4.33608991])
 
-data = readData('Data/OrangeFL_CSSEGISandData_time_series_covid19_confirmed_US.csv')
-
-print(data)
 
 # Known inital conditions:
 y0 = np.array([10, 1, 0])
@@ -57,23 +54,16 @@ x0 = np.array([0,0])
 t = np.linspace(0,10,10)
 m = LS(x0, t, y0, infectives)
 
-print('these are the best fit parameters [beta, gamma]: ',m.x)
+print("The best fit parameters:")
+print("Beta:\t", m.x[0])
+print("Gamma:\t", m.x[1])
 
 
 # get the solutions using the parameters found with LS
 t = np.linspace(0, 10, 100)
-y = integrate.odeint(model, y0, t, args = (m.x[0], m.x[1]))
 
-# plot the data
-plt.plot(np.linspace(0,len(infectives), len(infectives)), infectives, 'ro', label = 'Data')
+labels = ['Susceptibles', 'Infected', 'Recovered']
 
-# plot the solutions
-plt.plot(t, y[:,0], 'b', label = 'Susceptibles')
-plt.plot(t, y[:,1], 'r', label = 'Infectives')
-plt.plot(t, y[:,2], 'g', label = 'Recovered')
-plt.ylabel('Individuals')
-plt.xlabel('Days')
-plt.title('Simulations')
-plt.legend()
-plt.show()
+y = simulate(model, y0, t, (m.x[0], m.x[1]), labels)
+
 
