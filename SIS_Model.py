@@ -18,9 +18,15 @@ def model(y, x, beta1, beta2, gamma1, gamma2, mu):
     return dSdt, dI1dt, dI2dt
 
 
+
+# Used to run numerical experiments for a homework assignment
 y0 = np.array([100, 1, 1])
 beta1, beta2, gamma1, gamma2, mu = 0.003, 0.003, 0.0999, 0.1, 0.01
 t = np.linspace(0,100000,100001)
 labels = ['Susceptibles', 'Strain 1', 'Strain 2']
 
 y = simulate(model, y0, t, (beta1, beta2, gamma1, gamma2, mu), labels)
+
+# Results: 
+    # The strains will coexist only when their corresponding 
+    # R0 values in the absence of the other strain is equal. 
