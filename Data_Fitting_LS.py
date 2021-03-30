@@ -58,10 +58,8 @@ print("The best fit parameters:")
 print("Beta:\t", m.x[0])
 print("Gamma:\t", m.x[1])
 
-
-# get the solutions using the parameters found with LS
+# Run simulations using the best fit parameters
 t = np.linspace(0, 10, 100)
-
 labels = ['Susceptibles', 'Infected', 'Recovered']
 
 y = simulate(model, y0, t, (m.x[0], m.x[1]), labels)
