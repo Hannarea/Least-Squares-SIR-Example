@@ -32,19 +32,19 @@ def simulate(model, y0, t, parameters, labels):
     return y
        
 
-# An example on how to use:
-def model(y, t, beta, gamma):
-    dSdt = -beta*y[0]*y[1]
-    dIdt = beta*y[0]*y[1] - gamma*y[1]
-    dRdt = gamma*y[1]
-    return dSdt, dIdt, dRdt
+# # An example on how to use:
+# def model(y, t, beta, gamma):
+#     dSdt = -beta*y[0]*y[1]
+#     dIdt = beta*y[0]*y[1] - gamma*y[1]
+#     dRdt = gamma*y[1]
+#     return dSdt, dIdt, dRdt
 
-y0 = np.array([10, 1, 0])
-t = np.linspace(0,10,100)
-beta, gamma = 0.33, 0.1
-labels = ['sus', 'inf', 'rec']
+# y0 = np.array([10, 1, 0])
+# t = np.linspace(0,10,100)
+# beta, gamma = 0.33, 0.1
+# labels = ['sus', 'inf', 'rec']
 
-y = simulate(model, y0, t, (beta, gamma), labels)
+# y = simulate(model, y0, t, (beta, gamma), labels)
 
 
     
